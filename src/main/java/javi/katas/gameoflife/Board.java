@@ -18,4 +18,8 @@ public class Board {
     public Integer columns() {
         return columns;
     }
+
+    public Cell recoverCell(Coordinate any) {
+        return null;
+    }
 }

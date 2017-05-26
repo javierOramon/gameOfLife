@@ -33,4 +33,17 @@ public class BoardTest {
         //Assert
         assertEquals("The number of columns is not the same which was injected", columns, numberOfRows);
     }
+    
+    @Test
+    public void boardEmptyRecoverADieCell(){
+        //Arrange
+        final Cell cell= Cell.DIE;
+        Board board = new Board(5, 5);
+        Coordinate any = new Coordinate(0, 0);
+        //Act
+        Cell result = board.recoverCell(any);
+        //Assert
+        assertEquals("The cell is not death", cell, result);
+    }
+    
 }

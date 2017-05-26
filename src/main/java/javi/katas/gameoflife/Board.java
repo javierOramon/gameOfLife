@@ -22,4 +22,8 @@ public class Board {
     public Cell recoverCell(Coordinate any) {
         return Cell.DIE;
     }
+
+    public void changeCell(Coordinate any, Cell cell) {
+
+    }
 }

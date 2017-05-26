@@ -1,5 +1,5 @@
 package javi.katas.gameoflife;
 
 public enum Cell {
-    DIE
+    DIE, ALIVE;
 }

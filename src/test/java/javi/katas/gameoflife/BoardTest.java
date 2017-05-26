@@ -73,6 +73,23 @@ public class BoardTest {
         assertEquals("The cell is alive", cell_expected, result);
     }
 
+    @Test(expected=IndexOutOfBoundsException.class)
+    public void tryToRecoverACoordinateOutOfTheBoardReturnAnError(){
+        //Arrange
+        Coordinate outOfTheLimit = new Coordinate(10, 0);
+        Board board = new Board(5, 5);
+        //Act
+        board.recoverCell(outOfTheLimit);
+    }
 
+    @Test(expected=IndexOutOfBoundsException.class)
+    public void tryTochangeACoordinateOutOfTheBoardReturnAnError(){
+        //Arrange
+        final Cell cell_expected= Cell.DIE;
+        Board board = new Board(5, 5);
+        Coordinate outOfTheLimit = new Coordinate(10, 0);
+        //Act
+        board.changeCell(outOfTheLimit, cell_expected);
+    }
     
 }

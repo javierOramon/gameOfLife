@@ -59,6 +59,20 @@ public class BoardTest {
         assertEquals("The cell is not alive", cell, result);
     }
 
+    @Test
+    public void changeCellToDieAndRecoverThisCell(){
+        //Arrange
+        final Cell cell_expected= Cell.DIE;
+        Board board = new Board(5, 5);
+        Coordinate any = new Coordinate(0, 0);
+        board.changeCell(any, Cell.ALIVE);
+        //Act
+        board.changeCell(any, cell_expected);
+        Cell result = board.recoverCell(any);
+        //Assert
+        assertEquals("The cell is alive", cell_expected, result);
+    }
+
 
     
 }

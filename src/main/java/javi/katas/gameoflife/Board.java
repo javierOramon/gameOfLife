@@ -20,6 +20,6 @@ public class Board {
     }
 
     public Cell recoverCell(Coordinate any) {
-        return null;
+        return Cell.DIE;
     }
 }

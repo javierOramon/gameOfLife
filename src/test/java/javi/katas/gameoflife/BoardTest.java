@@ -27,7 +27,7 @@ public class BoardTest {
     public void checkWidthOfBoard(){
         //Arrange
         final Integer columns = 5;
-        Board board = new Board(0, columns);
+        Board board = new Board(1, columns);
         //Act
         Integer numberOfRows = board.columns();
         //Assert

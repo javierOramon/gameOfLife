@@ -1,6 +1,11 @@
 package javi.katas.gameoflife;
 
 public class Coordinate {
-    public Coordinate(Integer i, Integer i1) {
+    public final int x;
+    public final int y;
+
+    public Coordinate(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 }

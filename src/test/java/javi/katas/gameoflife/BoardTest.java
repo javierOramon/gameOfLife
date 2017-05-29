@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class BoardTest {
 
@@ -71,6 +72,19 @@ public class BoardTest {
         Cell result = board.recoverCell(any);
         //Assert
         assertEquals("The cell is alive", cell_expected, result);
+    }
+
+    @Test
+    public void compareDifferentsBoardWithTheSameValuesReturnTrue(){
+        //Arrange
+        Board board1 = new Board(5, 5);
+        board1.changeCell(new Coordinate(1,1), Cell.DIE);
+        Board board2 = new Board(5, 5);
+        board2.changeCell(new Coordinate(1,1), Cell.DIE);
+        //Act
+        boolean areEquals = board1.equals(board2);
+        //Assert
+        assertTrue("Are not equals", areEquals);
     }
 
     @Test(expected=IndexOutOfBoundsException.class)

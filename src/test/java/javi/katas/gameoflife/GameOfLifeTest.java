@@ -28,12 +28,13 @@ public class GameOfLifeTest {
     @Test
     public void cellWithoutNeighboursDie(){
         //Arrange
-        Board board = new Board(5,5);
+        Board emptyBoard = new Board(5,5);
         final Coordinate any = new Coordinate(0, 0);
         board.changeCell(any, Cell.ALIVE);
         //Act
         gameOfLife.execute();
         //Assert
         Board boardResult = gameOfLife.recoverBoard();
+        assertEquals("The board result isn't empty", emptyBoard, boardResult);
     }
 }

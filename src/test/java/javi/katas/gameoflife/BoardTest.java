@@ -75,7 +75,7 @@ public class BoardTest {
     }
 
     @Test
-    public void compareDifferentsBoardWithTheSameValuesReturnTrue(){
+    public void compareDifferentsBoardsWithTheSameValuesReturnTrue(){
         //Arrange
         Board board1 = new Board(5, 5);
         board1.changeCell(new Coordinate(1,1), Cell.DIE);
@@ -85,6 +85,19 @@ public class BoardTest {
         boolean areEquals = board1.equals(board2);
         //Assert
         assertTrue("Are not equals", areEquals);
+    }
+
+    @Test
+    public void compareDifferentsBoardsWithDifferentsValuesReturnFalse(){
+        //Arrange
+        Board board1 = new Board(5, 5);
+        board1.changeCell(new Coordinate(1,1), Cell.DIE);
+        Board board2 = new Board(5, 5);
+        board2.changeCell(new Coordinate(1,1), Cell.ALIVE);
+        //Act
+        boolean areNotEquals = !board1.equals(board2);
+        //Assert
+        assertTrue("Are not equals", areNotEquals);
     }
 
     @Test(expected=IndexOutOfBoundsException.class)

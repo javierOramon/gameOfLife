@@ -33,4 +33,19 @@ public class Board {
     public void changeCell(Coordinate any, Cell cell) {
         board.get(any.x).set(any.y, cell);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Board board1 = (Board) o;
+
+        return board != null ? board.equals(board1.board) : board1.board == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return board != null ? board.hashCode() : 0;
+    }
 }

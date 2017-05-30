@@ -132,7 +132,6 @@ public class BoardTest {
                 board.recoverCell(new Coordinate(1,2)),
                 board.recoverCell(new Coordinate(1,3)),
                 board.recoverCell(new Coordinate(2,1)),
-                board.recoverCell(new Coordinate(2,2)),
                 board.recoverCell(new Coordinate(2,3)),
                 board.recoverCell(new Coordinate(3,1)),
                 board.recoverCell(new Coordinate(3,2)),

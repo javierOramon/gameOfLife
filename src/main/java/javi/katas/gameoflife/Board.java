@@ -49,7 +49,18 @@ public class Board {
         return board != null ? board.hashCode() : 0;
     }
 
-    public AroundCells neightbours(Coordinate centerCell, int i) {
-        return null;
+    public AroundCells neightbours(Coordinate centerCell, int range) {
+        List<Coordinate> coordinateNeightbours = new ArrayList<>();
+        for (int rowPosition = centerCell.x - 1; rowPosition <= centerCell.x + 1; rowPosition++) {
+            for (int columnPosition = centerCell.y - 1; columnPosition <= centerCell.y + 1; columnPosition++) {
+                final Coordinate currentCoordinate = new Coordinate(rowPosition, columnPosition);
+                if(!centerCell.equals(currentCoordinate)) {
+                    coordinateNeightbours.add(currentCoordinate);
+                }
+            }
+        }
+        List<Cell> neightbourCells = new ArrayList<>();
+        coordinateNeightbours.stream().forEach(entry -> neightbourCells.add(recoverCell(entry)));
+        return new AroundCells(recoverCell(centerCell), neightbourCells);
     }
 }

@@ -48,4 +48,8 @@ public class Board {
     public int hashCode() {
         return board != null ? board.hashCode() : 0;
     }
+
+    public AroundCells neightbours(Coordinate centerCell, int i) {
+        return null;
+    }
 }

@@ -50,20 +50,36 @@ public class Board {
     }
 
     public AroundCells neightbours(Coordinate centerCell, int range) {
+        List<Coordinate> coordinateNeightbours = extractNeightbours(centerCell, 1);
+        List<Cell> neightbourCells = new ArrayList<>();
+        coordinateNeightbours.stream().forEach(entry -> neightbourCells.add(recoverCell(entry)));
+        return new AroundCells(recoverCell(centerCell), neightbourCells);
+    }
+
+    private List<Coordinate> extractNeightbours(Coordinate centerCell, int range) {
+        final int rowUpLimit = centerCell.x - range;
+        final int rowDownLimit = centerCell.x + range;
+        final int columnLeftLimit = centerCell.y - range;
+        final int columnRightLimit = centerCell.y + range;
+
         List<Coordinate> coordinateNeightbours = new ArrayList<>();
-        for (int rowPosition = centerCell.x - 1; rowPosition <= centerCell.x + 1; rowPosition++) {
-            for (int columnPosition = centerCell.y - 1; columnPosition <= centerCell.y + 1; columnPosition++) {
-                if(rowPosition >= 0 && rowPosition < rows() && columnPosition >= 0){
-                    final Coordinate currentCoordinate = new Coordinate(rowPosition, columnPosition);
-                    if(!centerCell.equals(currentCoordinate)) {
-                        coordinateNeightbours.add(currentCoordinate);
-                    }
+        for (int rowPosition = rowUpLimit; rowPosition <= rowDownLimit; rowPosition++) {
+            for (int columnPosition = columnLeftLimit; columnPosition <= columnRightLimit; columnPosition++) {
+                final Coordinate currentCoordinate = new Coordinate(rowPosition, columnPosition);
+                if(validateCoordinate(centerCell, currentCoordinate)){
+                    coordinateNeightbours.add(currentCoordinate);
                 }
 
             }
         }
-        List<Cell> neightbourCells = new ArrayList<>();
-        coordinateNeightbours.stream().forEach(entry -> neightbourCells.add(recoverCell(entry)));
-        return new AroundCells(recoverCell(centerCell), neightbourCells);
+        return coordinateNeightbours;
+    }
+
+    private boolean validateCoordinate(Coordinate centerCell, Coordinate currentCoordinate) {
+        return isInRange(currentCoordinate) && !centerCell.equals(currentCoordinate);
+    }
+
+    private boolean isInRange(Coordinate coordinate) {
+        return coordinate.x >= 0 && coordinate.x < rows() && coordinate.y >= 0;
     }
 }

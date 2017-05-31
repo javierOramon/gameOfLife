@@ -53,10 +53,13 @@ public class Board {
         List<Coordinate> coordinateNeightbours = new ArrayList<>();
         for (int rowPosition = centerCell.x - 1; rowPosition <= centerCell.x + 1; rowPosition++) {
             for (int columnPosition = centerCell.y - 1; columnPosition <= centerCell.y + 1; columnPosition++) {
-                final Coordinate currentCoordinate = new Coordinate(rowPosition, columnPosition);
-                if(!centerCell.equals(currentCoordinate)) {
-                    coordinateNeightbours.add(currentCoordinate);
+                if(rowPosition >= 0 && rowPosition < rows() && columnPosition >= 0){
+                    final Coordinate currentCoordinate = new Coordinate(rowPosition, columnPosition);
+                    if(!centerCell.equals(currentCoordinate)) {
+                        coordinateNeightbours.add(currentCoordinate);
+                    }
                 }
+
             }
         }
         List<Cell> neightbourCells = new ArrayList<>();

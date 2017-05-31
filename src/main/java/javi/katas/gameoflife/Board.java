@@ -80,6 +80,8 @@ public class Board {
     }
 
     private boolean isInRange(Coordinate coordinate) {
-        return coordinate.x >= 0 && coordinate.x < rows() && coordinate.y >= 0;
+        final boolean rowsValid = coordinate.x >= 0 && coordinate.x < rows();
+        final boolean columnsValid = coordinate.y >= 0 && coordinate.y < columns();
+        return rowsValid && columnsValid;
     }
 }

@@ -122,11 +122,11 @@ public class BoardTest {
     }
 
     @Test
-    public void extractNeighboursOfTheCenterCellWithRangeOne(){
+    public void extractNeighboursOfTheCenterCell(){
         //Arrange
         final Coordinate centerCell = new Coordinate(2, 2);
         Board board = new Board(5,5);
-        board.changeCell(new Coordinate(1,1), Cell.DIE);
+        board.changeCell(new Coordinate(1,1), Cell.ALIVE);
         AroundCells aroundCells = new AroundCells(board.recoverCell(centerCell), Arrays.asList(
                 board.recoverCell(new Coordinate(1,1)),
                 board.recoverCell(new Coordinate(1,2)),
@@ -136,6 +136,23 @@ public class BoardTest {
                 board.recoverCell(new Coordinate(3,1)),
                 board.recoverCell(new Coordinate(3,2)),
                 board.recoverCell(new Coordinate(3,3))
+        ));
+        //Act
+        AroundCells cells = board.neightbours(centerCell, 1);
+        //Assert
+        assertEquals("Not return the same cells", aroundCells, cells);
+    }
+
+    @Test
+    public void extractNeighboursOfTheTopLeftCorner(){
+        //Arrange
+        final Coordinate centerCell = new Coordinate(0, 0);
+        Board board = new Board(5,5);
+        board.changeCell(new Coordinate(1,1), Cell.ALIVE);
+        AroundCells aroundCells = new AroundCells(board.recoverCell(centerCell), Arrays.asList(
+                board.recoverCell(new Coordinate(0,1)),
+                board.recoverCell(new Coordinate(1,0)),
+                board.recoverCell(new Coordinate(1,1))
         ));
         //Act
         AroundCells cells = board.neightbours(centerCell, 1);

@@ -159,5 +159,22 @@ public class BoardTest {
         //Assert
         assertEquals("Not return the same cells", aroundCells, cells);
     }
+
+    @Test
+    public void extractNeighboursOfTheTopRightCorner(){
+        //Arrange
+        final Coordinate centerCell = new Coordinate(0, 4);
+        Board board = new Board(5,5);
+        board.changeCell(new Coordinate(1,1), Cell.ALIVE);
+        AroundCells aroundCells = new AroundCells(board.recoverCell(centerCell), Arrays.asList(
+                board.recoverCell(new Coordinate(0,3)),
+                board.recoverCell(new Coordinate(1,3)),
+                board.recoverCell(new Coordinate(1,4))
+        ));
+        //Act
+        AroundCells cells = board.neightbours(centerCell, 1);
+        //Assert
+        assertEquals("Not return the same cells", aroundCells, cells);
+    }
     
 }

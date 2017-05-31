@@ -50,7 +50,7 @@ public class Board {
     }
 
     public AroundCells neightbours(Coordinate centerCell, int range) {
-        List<Coordinate> coordinateNeightbours = extractNeightbours(centerCell, 1);
+        List<Coordinate> coordinateNeightbours = extractNeightbours(centerCell, range);
         List<Cell> neightbourCells = new ArrayList<>();
         coordinateNeightbours.stream().forEach(entry -> neightbourCells.add(recoverCell(entry)));
         return new AroundCells(recoverCell(centerCell), neightbourCells);

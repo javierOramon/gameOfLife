@@ -1,5 +1,6 @@
 package javi.katas.gameoflife;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class AroundCells {
@@ -10,6 +11,15 @@ public class AroundCells {
     public AroundCells(Cell center, Collection<Cell> aroundCells){
         this.center = center;
         this.aroundCells = aroundCells;
+    }
+
+
+    public Cell center() {
+        return center;
+    }
+
+    public Collection<Cell> neightbours() {
+        return new ArrayList<Cell>(aroundCells);
     }
 
     @Override

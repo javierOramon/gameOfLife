@@ -32,7 +32,7 @@ public class GameOfLifeTest {
         final Coordinate any = new Coordinate(0, 0);
         board.changeCell(any, Cell.ALIVE);
         //Act
-        gameOfLife.execute();
+        gameOfLife.execute(1);
         //Assert
         Board boardResult = gameOfLife.recoverBoard();
         assertEquals("The board result isn't empty", emptyBoard, boardResult);

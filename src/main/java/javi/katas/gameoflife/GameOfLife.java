@@ -13,7 +13,7 @@ public class GameOfLife {
                 final Coordinate centerCell = new Coordinate(row, column);
                 AroundCells aroundCells = board.neightbours(centerCell, range);
                 long amountLives = aroundCells.neightbours().stream().filter(cell -> Cell.ALIVE.equals(cell)).count();
-                if(amountLives < 2){
+                if(amountLives < 2 || amountLives == 4){
                     board.changeCell(centerCell, Cell.DIE);
                 }
             }

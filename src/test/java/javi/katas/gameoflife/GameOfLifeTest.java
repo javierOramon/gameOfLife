@@ -37,4 +37,18 @@ public class GameOfLifeTest {
         Board boardResult = gameOfLife.recoverBoard();
         assertEquals("The board result isn't empty", emptyBoard, boardResult);
     }
+
+    @Test
+    public void cellWithOneNeighbourDie(){
+        //Arrange
+        Board emptyBoard = new Board(5,5);
+        final Coordinate any = new Coordinate(0, 0);
+        board.changeCell(any, Cell.ALIVE);
+        board.changeCell(new Coordinate(0,1), Cell.ALIVE);
+        //Act
+        gameOfLife.execute(1);
+        //Assert
+        Board boardResult = gameOfLife.recoverBoard();
+        assertEquals("The board result isn't empty", emptyBoard, boardResult);
+    }
 }

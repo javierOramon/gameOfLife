@@ -66,4 +66,33 @@ public class TransformerCellTest {
         Cell cellResult = board.recoverCell(center);
         assertEquals("The cell is alive", Cell.DIE, cellResult);
     }
+
+    @Test
+    public void cellAliveWithTwoNeightboursSurvive(){
+        //Arrange
+        final Coordinate center = new Coordinate(2, 2);
+        board.changeCell(center, Cell.ALIVE);
+        board.changeCell(new Coordinate(1,1), Cell.ALIVE);
+        board.changeCell(new Coordinate(1,2), Cell.ALIVE);
+        //Act
+        transformerCell.transform(center, board, 1);
+        //Assert
+        Cell cellResult = board.recoverCell(center);
+        assertEquals("The cell is death", Cell.ALIVE, cellResult);
+    }
+
+    @Test
+    public void cellAliveWithThreeNeightboursSurvive(){
+        //Arrange
+        final Coordinate center = new Coordinate(2, 2);
+        board.changeCell(center, Cell.ALIVE);
+        board.changeCell(new Coordinate(1,1), Cell.ALIVE);
+        board.changeCell(new Coordinate(1,2), Cell.ALIVE);
+        board.changeCell(new Coordinate(1,3), Cell.ALIVE);
+        //Act
+        transformerCell.transform(center, board, 1);
+        //Assert
+        Cell cellResult = board.recoverCell(center);
+        assertEquals("The cell is death", Cell.ALIVE, cellResult);
+    }
 }

@@ -38,39 +38,32 @@ public class TransformerCellTest {
         assertEquals("The cell result is alive", expected, cellresult);
     }
 
-//    @Test
-//    public void cellWithOneNeighbourDie(){
-//        //Arrange
-//        Board emptyBoard = new Board(5,5);
-//        final Coordinate center = new Coordinate(0, 0);
-//        board.changeCell(center, Cell.ALIVE);
-//        board.changeCell(new Coordinate(0,1), Cell.ALIVE);
-//        //Act
-//        transformerCell.execute(1);
-//        //Assert
-//        Board boardResult = transformerCell.recoverBoard();
-//        assertEquals("The board result isn't empty", emptyBoard, boardResult);
-//    }
-//
-//    @Test
-//    public void cellWithFourNeighboursDie(){
-//        //Arrange
-//        Board boardExpected = new Board(5,5);
-//        boardExpected.changeCell(new Coordinate(1,1), Cell.ALIVE);
-//        boardExpected.changeCell(new Coordinate(1,2), Cell.ALIVE);
-//        boardExpected.changeCell(new Coordinate(1,3), Cell.ALIVE);
-//        boardExpected.changeCell(new Coordinate(2,1), Cell.ALIVE);
-//
-//        final Coordinate center = new Coordinate(2, 2);
-//        board.changeCell(center, Cell.ALIVE);
-//        board.changeCell(new Coordinate(1,1), Cell.ALIVE);
-//        board.changeCell(new Coordinate(1,2), Cell.ALIVE);
-//        board.changeCell(new Coordinate(1,3), Cell.ALIVE);
-//        board.changeCell(new Coordinate(2,1), Cell.ALIVE);
-//        //Act
-//        transformerCell.execute(1);
-//        //Assert
-//        Board boardResult = transformerCell.recoverBoard();
-//        assertEquals("The board result isn't empty", boardExpected, boardResult);
-//    }
+    @Test
+    public void cellWithOneNeighbourDie(){
+        //Arrange
+        final Coordinate center = new Coordinate(0, 0);
+        board.changeCell(center, Cell.ALIVE);
+        board.changeCell(new Coordinate(0,1), Cell.ALIVE);
+        //Act
+        transformerCell.transform(center, board, 1);
+        //Assert
+        Cell cellresult = board.recoverCell(center);
+        assertEquals("The cell is alive", Cell.DIE, cellresult);
+    }
+
+    @Test
+    public void cellWithFourNeighboursDie(){
+        //Arrange
+        final Coordinate center = new Coordinate(2, 2);
+        board.changeCell(center, Cell.ALIVE);
+        board.changeCell(new Coordinate(1,1), Cell.ALIVE);
+        board.changeCell(new Coordinate(1,2), Cell.ALIVE);
+        board.changeCell(new Coordinate(1,3), Cell.ALIVE);
+        board.changeCell(new Coordinate(2,1), Cell.ALIVE);
+        //Act
+        transformerCell.transform(center, board,1);
+        //Assert
+        Cell cellResult = board.recoverCell(center);
+        assertEquals("The cell is alive", Cell.DIE, cellResult);
+    }
 }

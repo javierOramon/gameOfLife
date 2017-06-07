@@ -37,4 +37,18 @@ public class GameOfLifeTest {
         //Assert
         assertEquals("The board is not empty", emptyBoard, board);
     }
+
+    @Test
+    public void cellAliveWithTwoNeightboursSurvive(){
+        //Arrange
+        Board expectedBoard = new Board(5, 5);
+        expectedBoard.changeCell(new Coordinate(2,2), Cell.ALIVE);
+        board.changeCell(new Coordinate(2,2), Cell.ALIVE);
+        board.changeCell(new Coordinate(2,1), Cell.ALIVE);
+        board.changeCell(new Coordinate(2,3), Cell.ALIVE);
+        //Act
+        gameOfLife.execute();
+        //Assert
+        assertEquals("The board is not empty", expectedBoard, board);
+    }
 }

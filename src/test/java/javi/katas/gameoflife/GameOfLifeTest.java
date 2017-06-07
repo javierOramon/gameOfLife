@@ -42,7 +42,9 @@ public class GameOfLifeTest {
     public void cellAliveWithTwoNeightboursSurvive(){
         //Arrange
         Board expectedBoard = new Board(5, 5);
+        expectedBoard.changeCell(new Coordinate(1,2), Cell.ALIVE);
         expectedBoard.changeCell(new Coordinate(2,2), Cell.ALIVE);
+        expectedBoard.changeCell(new Coordinate(3,2), Cell.ALIVE);
         board.changeCell(new Coordinate(2,2), Cell.ALIVE);
         board.changeCell(new Coordinate(2,1), Cell.ALIVE);
         board.changeCell(new Coordinate(2,3), Cell.ALIVE);

@@ -16,15 +16,6 @@ public class TransformerCellTest {
         transformerCell = new TransformerCell();
     }
 
-//    @Test
-//    public void recoverBoardReturnsTheCurrentBoard(){
-//        //Arrange
-//        //Act
-//        Board boardResult = transformerCell.recoverBoard();
-//        //Assert
-//        assertEquals("Is not the same board", board, boardResult);
-//    }
-
     @Test
     public void cellWithoutNeighboursDie(){
         //Arrange
@@ -108,5 +99,19 @@ public class TransformerCellTest {
         //Assert
         Cell cellResult = board.recoverCell(center);
         assertEquals("The cell is death", Cell.ALIVE, cellResult);
+    }
+
+    @Test
+    public void cellDeathWithTwoNeightboursDie(){
+        //Arrange
+        final Coordinate center = new Coordinate(2, 2);
+        board.changeCell(new Coordinate(1,1), Cell.ALIVE);
+        board.changeCell(new Coordinate(1,2), Cell.ALIVE);
+        board.changeCell(new Coordinate(1,3), Cell.ALIVE);
+        //Act
+        transformerCell.transform(center, board, 1);
+        //Assert
+        Cell cellResult = board.recoverCell(center);
+        assertEquals("The cell is alive", Cell.DIE, cellResult);
     }
 }

@@ -19,6 +19,15 @@ public class GameOfLifeTest {
     }
 
     @Test
+    public void emptyBoardReturnAnEmptyBoard(){
+        //Arrange
+        //Act
+        Board emptyBoard = new Board(5, 5);
+        //Assert
+        assertEquals("The board is not empty", emptyBoard, board);
+    }
+
+    @Test
     public void cellDieAndLeaveAnEmptyBoard(){
         //Arrange
         Board emptyBoard = new Board(5, 5);

@@ -105,9 +105,8 @@ public class TransformerCellTest {
     public void cellDeathWithTwoNeightboursDie(){
         //Arrange
         final Coordinate center = new Coordinate(2, 2);
-        board.changeCell(new Coordinate(1,1), Cell.ALIVE);
-        board.changeCell(new Coordinate(1,2), Cell.ALIVE);
-        board.changeCell(new Coordinate(1,3), Cell.ALIVE);
+        board.changeCell(new Coordinate(2,1), Cell.ALIVE);
+        board.changeCell(new Coordinate(2,3), Cell.ALIVE);
         //Act
         transformerCell.transform(center, board, 1);
         //Assert

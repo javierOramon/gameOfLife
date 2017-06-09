@@ -29,10 +29,22 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void cellDieAndLeaveAnEmptyBoard(){
+    public void cellAliveWithoutNeightboursReturnAnEmptyBoard(){
         //Arrange
         GameOfLife gameExpected = new GameOfLife(new Board(5,5), transformer);
         board.changeCell(new Coordinate(2,2), Cell.ALIVE);
+        //Act
+        GameOfLife newGame = gameOfLife.execute();
+        //Assert
+        assertEquals("The board is not empty", gameExpected, newGame);
+    }
+
+    @Test
+    public void cellAliveWithOneAliveNeightbourReturnAnEmptyBoard(){
+        //Arrange
+        GameOfLife gameExpected = new GameOfLife(new Board(5,5), transformer);
+        board.changeCell(new Coordinate(2,2), Cell.ALIVE);
+        board.changeCell(new Coordinate(2,3), Cell.ALIVE);
         //Act
         GameOfLife newGame = gameOfLife.execute();
         //Assert

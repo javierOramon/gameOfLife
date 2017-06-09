@@ -7,6 +7,15 @@
     <groupId>javi.katas</groupId>
     <artifactId>game-of-life</artifactId>
     <version>1.0</version>
+
+    <repositories>
+        <repository>
+            <id>spring</id>
+            <name>Spring Plugins</name>
+            <url>http://repo.spring.io/plugins-release/</url>
+        </repository>
+    </repositories>
+
     <build>
         <plugins>
             <plugin>
@@ -25,7 +34,34 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
+        <dependency>
+            <groupId>com.gemstone.gemfire</groupId>
+            <artifactId>gemfire</artifactId>
+            <version>8.2.0</version>
+        </dependency>
     </dependencies>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>2.7</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>cobertura</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-surefire-report-plugin</artifactId>-->
+                <!--<version>2.20</version>-->
+            <!--</plugin>-->
+        </plugins>
+    </reporting>
 
 
 </project>

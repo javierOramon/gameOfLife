@@ -21,21 +21,22 @@ public class GameOfLifeTest {
     @Test
     public void emptyBoardReturnAnEmptyBoard(){
         //Arrange
+        GameOfLife gameExpected = new GameOfLife(new Board(5,5), transformer);
         //Act
-        Board emptyBoard = new Board(5, 5);
+        GameOfLife newGame = gameOfLife.execute();
         //Assert
-        assertEquals("The board is not empty", emptyBoard, board);
+        assertEquals("The board is not empty", gameExpected, newGame);
     }
 
     @Test
     public void cellDieAndLeaveAnEmptyBoard(){
         //Arrange
-        Board emptyBoard = new Board(5, 5);
+        GameOfLife gameExpected = new GameOfLife(new Board(5,5), transformer);
         board.changeCell(new Coordinate(2,2), Cell.ALIVE);
         //Act
-        gameOfLife.execute();
+        GameOfLife newGame = gameOfLife.execute();
         //Assert
-        assertEquals("The board is not empty", emptyBoard, board);
+        assertEquals("The board is not empty", gameExpected, newGame);
     }
 
     @Test
@@ -45,12 +46,13 @@ public class GameOfLifeTest {
         expectedBoard.changeCell(new Coordinate(1,2), Cell.ALIVE);
         expectedBoard.changeCell(new Coordinate(2,2), Cell.ALIVE);
         expectedBoard.changeCell(new Coordinate(3,2), Cell.ALIVE);
+        GameOfLife gameExpected = new GameOfLife(expectedBoard, transformer);
         board.changeCell(new Coordinate(2,2), Cell.ALIVE);
         board.changeCell(new Coordinate(2,1), Cell.ALIVE);
         board.changeCell(new Coordinate(2,3), Cell.ALIVE);
         //Act
-        gameOfLife.execute();
+        GameOfLife newGame = gameOfLife.execute();
         //Assert
-        assertEquals("The board is not empty", expectedBoard, board);
+        assertEquals("The board is not empty", gameExpected, newGame);
     }
 }

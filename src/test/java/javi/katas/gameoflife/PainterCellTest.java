@@ -24,4 +24,15 @@ public class PainterCellTest {
         //Assert
         assertEquals("Cell doesn' paint an asterisk", expected, symbol);
     }
+
+    @Test
+    public void cellAlivePaintTheCharacter_o(){
+        //Arrange
+        final String expected = "o";
+        Cell die = Cell.ALIVE;
+        //Act
+        String symbol = painter.paint(die);
+        //Assert
+        assertEquals("Cell doesn' paint an o", expected, symbol);
+    }
 }

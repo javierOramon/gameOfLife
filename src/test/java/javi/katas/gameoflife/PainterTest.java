@@ -17,7 +17,7 @@ public class PainterTest {
     @Test
     public void printEmptyBoard(){
         //Arrange
-        final String expected = "**\n**";
+        final String expected = "**\n**\n";
         Board board = new Board(2,2);
         //Act
         String result = painter.paint(board);

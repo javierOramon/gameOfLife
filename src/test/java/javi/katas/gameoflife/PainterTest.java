@@ -37,4 +37,19 @@ public class PainterTest {
         //Assert
         assertEquals("The result is not correct", expected, result);
     }
+
+    @Test
+    public void printAllAliveCellsInBoard(){
+        //Arrange
+        final String expected = "oo\noo\n";
+        Board board = new Board(2,2);
+        board.changeCell(new Coordinate(0,0), Cell.ALIVE);
+        board.changeCell(new Coordinate(0,1), Cell.ALIVE);
+        board.changeCell(new Coordinate(1,0), Cell.ALIVE);
+        board.changeCell(new Coordinate(1,1), Cell.ALIVE);
+        //Act
+        String result = painter.paint(board);
+        //Assert
+        assertEquals("The result is not correct", expected, result);
+    }
 }

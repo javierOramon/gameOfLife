@@ -37,4 +37,8 @@ public class GameOfLife {
     public int hashCode() {
         return board.hashCode();
     }
+
+    public Board board() {
+        return board;
+    }
 }
